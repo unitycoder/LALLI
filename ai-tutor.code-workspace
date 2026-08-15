@@ -1,0 +1,95 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"chat.tools.terminal.autoApprove": {
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -c \"import tts; assert tts\\.available_voices\\(\\) == \\['en_US-lessac-medium'\\]; assert tts\\.resolve_voice\\(None\\) == 'en_US-lessac-medium'; print\\(tts\\.available_voices\\(\\)\\)\"; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -c \"from fastapi\\.testclient import TestClient; import main; client = TestClient\\(main\\.app\\); config_response = client\\.get\\('/api/config'\\); assert config_response\\.status_code == 200; payload = config_response\\.json\\(\\); assert payload\\['voices'\\] == \\['en_US-lessac-medium'\\]; assert payload\\['voice_preview_endpoint'\\] == '/api/voice/preview'; invalid_response = client\\.post\\('/api/voice/preview', json=\\{'text': 'test', 'voice': 'missing-voice'\\}\\); assert invalid_response\\.status_code == 400; print\\('config and invalid voice checks passed'\\)\"; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -c \"from fastapi\\.testclient import TestClient; import main; client = TestClient\\(main\\.app\\); config_response = client\\.get\\('/api/config'\\); invalid_response = client\\.post\\('/api/voice/preview', json=\\{'text': 'test', 'voice': 'missing-voice'\\}\\); print\\(config_response\\.status_code, config_response\\.json\\(\\)\\); print\\(invalid_response\\.status_code, invalid_response\\.text\\)\"; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -c \"import os; import tts; path = tts\\.synthesize\\('Test voice', 'en_US-lessac-medium'\\); assert os\\.path\\.getsize\\(path\\) > 44; os\\.remove\\(path\\); print\\('Piper synthesis passed'\\)\"; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^node --check frontend/app\\.js$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -m py_compile main\\.py stt\\.py; \\.\\\\venv\\\\Scripts\\\\python\\.exe -c \"import main; assert main\\._language_code\\('Chinese'\\) == 'zh'; assert main\\._language_code\\('Spanish'\\) == 'es'; print\\('language mapping passed'\\)\"; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -c \"import stt; captured = \\{\\}; class FakeModel: pass; stt\\._model = FakeModel\\(\\); stt\\._model\\.transcribe = lambda path, \\*\\*kwargs: \\(captured\\.update\\(kwargs\\) or \\(\\[\\], None\\)\\); stt\\.transcribe\\('sample\\.webm', 'zh'\\); assert captured == \\{'language': 'zh', 'task': 'transcribe', 'temperature': 0\\.0, 'condition_on_previous_text': False, 'vad_filter': True\\}; print\\('STT decoding options passed'\\)\"; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -m py_compile main\\.py stt\\.py; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -c \"import stt; captured = \\{\\}; fake_model = type\\('FakeModel', \\(\\), \\{\\}\\)\\(\\); fake_model\\.transcribe = lambda path, \\*\\*kwargs: \\(captured\\.update\\(kwargs\\) or \\(\\[\\], None\\)\\); stt\\._model = fake_model; stt\\.transcribe\\('sample\\.webm', 'zh'\\); assert captured == \\{'language': 'zh', 'task': 'transcribe', 'temperature': 0\\.0, 'condition_on_previous_text': False, 'vad_filter': True\\}; print\\('STT decoding options passed'\\)\"; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^node --check frontend/app\\.js; node --check frontend/settings\\.js; node --check frontend/progress\\.js$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -m piper --help; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -m py_compile main\\.py tts\\.py; Pop-Location; node --check frontend/app\\.js; node --check frontend/settings\\.js$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -c \"import os; import tts; path = tts\\.synthesize\\('Short speed test', 'en_US-lessac-medium', 0\\.8\\); assert os\\.path\\.getsize\\(path\\) > 44; os\\.remove\\(path\\); print\\('reduced-speed Piper synthesis passed'\\)\"; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^node --check frontend/app\\.js; node --check frontend/settings\\.js$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -m py_compile main\\.py llm_client\\.py; Pop-Location; node --check frontend/app\\.js$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -c \"from fastapi\\.testclient import TestClient; import main, llm_client; main\\.SESSIONS\\[999\\] = \\{\\}; llm_client\\.translate_to_english = lambda text: 'Hello, what is your name\\?'; response = TestClient\\(main\\.app\\)\\.post\\('/api/session/999/translate', json=\\{'text': '你好，你叫什么名字？'\\}\\); assert response\\.status_code == 200; assert response\\.json\\(\\) == \\{'translation': 'Hello, what is your name\\?'\\}; main\\.SESSIONS\\.pop\\(999\\); print\\('translation endpoint passed'\\)\"; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -c \"import importlib\\.util; print\\('pypinyin-installed' if importlib\\.util\\.find_spec\\('pypinyin'\\) else 'pypinyin-missing'\\)\"; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -m py_compile main\\.py; \\.\\\\venv\\\\Scripts\\\\python\\.exe -c \"from pypinyin import Style, lazy_pinyin; result = ' '\\.join\\(lazy_pinyin\\('你好，你叫什么名字？', style=Style\\.TONE\\)\\); assert result == 'nǐ hǎo ， nǐ jiào shén me míng zì ？'; print\\(result\\)\"; Pop-Location; node --check frontend/app\\.js$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -m pip install pypinyin; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^Push-Location backend; \\.\\\\venv\\\\Scripts\\\\python\\.exe -c \"import llm_client; payload = chr\\(123\\) \\+ chr\\(34\\) \\+ 'translation' \\+ chr\\(34\\) \\+ ':' \\+ chr\\(34\\) \\+ 'What are you saying\\?' \\+ chr\\(34\\) \\+ chr\\(125\\); assert llm_client\\._extract_json\\(payload\\)\\['translation'\\] == 'What are you saying\\?'; print\\('translation JSON parsing passed'\\)\"; Pop-Location$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^git check-ignore -v \\.venv/ backend/__pycache__/main\\.cpython-312\\.pyc backend/tutor\\.db backend/tutor\\.db-wal node_modules/ dist/ \\.vscode/settings\\.json frontend/app\\.js$/": {
+				"approve": true,
+				"matchCommandLine": true
+			}
+		}
+	}
+}

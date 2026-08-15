@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local AI Language Learning Instructor (LALLI)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <h1>🗣️ Local AI Language Learning Instructor</h1>
+    <nav>
+      <a href="index.html" class="active">Chat</a>
+      <a href="progress.html">Progress</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+  </header>
+
+  <section id="setup" class="panel">
+    <h2>Start a session</h2>
+    <div class="field-row">
+      <label>Language
+        <select id="language"></select>
+      </label>
+      <label>Topic
+        <select id="topic"></select>
+      </label>
+      <label>Level
+        <select id="level"></select>
+      </label>
+    </div>
+    <button id="startBtn">Start conversation</button>
+    <div id="startLoading" class="start-loading hidden" aria-live="polite">
+      <span class="spinner" aria-hidden="true"></span>
+      <span>Connecting to tutor...</span>
+    </div>
+  </section>
+
+  <section id="chatSection" class="panel hidden">
+    <div class="chat-meta">
+      <span id="metaLine"></span>
+      <div class="chat-actions">
+        <button id="repeatBtn" type="button" title="Play the previous tutor sentence again" aria-label="Play the previous tutor sentence again" disabled>↻ Repeat</button>
+        <button id="endBtn">End session</button>
+      </div>
+    </div>
+
+    <div id="messages" class="messages"></div>
+
+    <div class="input-row">
+      <button id="micBtn" title="Push and hold to talk">🎤</button>
+      <input id="textInput" type="text" placeholder="Type a message, or hold the mic to speak..." />
+      <button id="sendBtn">Send</button>
+    </div>
+    <label class="always-mic-option">
+      <input id="alwaysMic" type="checkbox">
+      Always-on microphone
+    </label>
+    <div id="status" class="status"></div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

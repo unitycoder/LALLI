@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress - Local AI Language Learning Instructor (LALLI)</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <h1>🗣️ Local AI Language Learning Instructor</h1>
+    <nav>
+      <a href="index.html">Chat</a>
+      <a href="progress.html" class="active">Progress</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+  </header>
+
+  <section class="panel">
+    <h2>Your progress (last 30 days)</h2>
+    <div class="stat-cards" id="statCards"></div>
+    <canvas id="progressChart" height="120"></canvas>
+  </section>
+
+</div>
+
+<script src="progress.js"></script>
+</body>
+</html>

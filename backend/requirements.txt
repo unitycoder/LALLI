@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+requests
+faster-whisper
+piper-tts
+pydantic
+python-multipart
+pypinyin
