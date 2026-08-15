@@ -89,6 +89,10 @@
 			"/^git check-ignore -v \\.venv/ backend/__pycache__/main\\.cpython-312\\.pyc backend/tutor\\.db backend/tutor\\.db-wal node_modules/ dist/ \\.vscode/settings\\.json frontend/app\\.js$/": {
 				"approve": true,
 				"matchCommandLine": true
+			},
+			"/^cmd /c \"call install\\.bat\"$/": {
+				"approve": true,
+				"matchCommandLine": true
 			}
 		}
 	}
