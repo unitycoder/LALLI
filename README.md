@@ -1,4 +1,4 @@
-# Local AI Language Tutor
+# Local AI Language Learning Instructor (LALLI)
 
 Runs 100% on your machine: local LLM (Ollama), local speech-to-text (faster-whisper),
 local text-to-speech (Piper). No cloud API calls, no accounts, no data leaving your computer.
