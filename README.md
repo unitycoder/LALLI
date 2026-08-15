@@ -1,5 +1,7 @@
 # Local AI Language Learning Instructor (LALLI)
 
+<img width="965" height="806" alt="image" src="https://github.com/user-attachments/assets/66edaed5-34b2-48b6-a761-4556bf49f839" />
+
 Runs 100% on your machine: local LLM (Ollama), local speech-to-text (faster-whisper),
 local text-to-speech (Piper). No cloud API calls, no accounts, no data leaving your computer.
 
