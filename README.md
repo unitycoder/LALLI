@@ -1,3 +1,5 @@
+<img src="https://img.shields.io/badge/VibeCoded-100%25-green" alt="AI Generated Content"/>
+
 # Local AI Language Learning Instructor (LALLI)
 
 <img width="965" height="806" alt="image" src="https://github.com/user-attachments/assets/66edaed5-34b2-48b6-a761-4556bf49f839" />
