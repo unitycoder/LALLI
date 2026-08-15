@@ -113,6 +113,40 @@ for the Progress chart. No manual logging needed — it all happens automaticall
 
 ---
 
+## Licenses
+
+This project does not currently include a separate `LICENSE` file. Unless one is
+added, the project source code is not explicitly released under an open-source
+license. The components installed or downloaded by the project have their own
+licenses:
+
+| Component | Use | License |
+| --- | --- | --- |
+| FastAPI | Web API framework | [MIT](https://github.com/fastapi/fastapi/blob/master/LICENSE) |
+| Uvicorn | ASGI server | [BSD-3-Clause](https://github.com/encode/uvicorn/blob/master/LICENSE.md) |
+| Requests | HTTP client | [Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE) |
+| faster-whisper | Speech-to-text | [MIT](https://github.com/SYSTRAN/faster-whisper/blob/master/LICENSE) |
+| Piper TTS | Text-to-speech engine | [GPL-3.0-or-later](https://github.com/OHF-Voice/piper1-gpl/blob/main/COPYING) |
+| Pydantic | Data validation | [MIT](https://github.com/pydantic/pydantic/blob/main/LICENSE) |
+| python-multipart | Multipart form parsing | [Apache-2.0](https://github.com/Kludex/python-multipart/blob/master/LICENSE.txt) |
+| pypinyin | Chinese pinyin conversion | [MIT](https://github.com/mozillazg/python-pinyin/blob/master/LICENSE.txt) |
+| SQLite | Local progress database | [Public domain](https://www.sqlite.org/copyright.html) |
+| Ollama | Local model runtime | [MIT](https://github.com/ollama/ollama/blob/main/LICENSE) |
+| Qwen model | Default language model (`qwen2.5:7b-instruct`) | [Apache-2.0](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/blob/main/LICENSE) |
+
+The Whisper model and Piper voice files are downloaded separately from their model
+publishers and may have license terms distinct from their Python packages. Check the
+license supplied with the specific model or voice before redistributing them. Piper
+voice licenses can vary by voice. The installer downloads `en_US-lessac-medium` to
+`backend\voices`; do not assume that changing `PIPER_VOICE_NAME` leaves the license
+unchanged.
+
+The dependency packages also bring transitive dependencies with their own licenses.
+For a complete redistribution review, inspect the installed package metadata and the
+license files included in the downloaded models and voices.
+
+---
+
 ## Where to go next (ideas)
 - Stream LLM output sentence-by-sentence into Piper for lower perceived latency
 - Auto voice-activity-detection (silero-vad) instead of push-to-talk
