@@ -14,7 +14,7 @@ local text-to-speech (Piper). No cloud API calls, no accounts, no data leaving y
 
 ## 1. Install prerequisites
 
-You need three things running locally: **Ollama** (the LLM), **Piper** (the voice), and Python 3.10+.
+You need **Ollama** (the LLM) and Python 3.10 or newer. The Windows installer sets up the Python dependencies and Piper voice automatically.
 
 ### a) Ollama (LLM)
 1. Install from https://ollama.com (Windows/Mac/Linux installers available)
@@ -26,42 +26,31 @@ You need three things running locally: **Ollama** (the LLM), **Piper** (the voic
    If you have a strong GPU, `qwen2.5:14b-instruct` is noticeably better at grammar correction.)
 3. Ollama runs automatically as a background service on `localhost:11434` after install.
 
-### b) Piper (TTS / the AI voice)
-Piper development moved from the old `rhasspy/piper` standalone-binary repo to a
-pip-installable package maintained by the Open Home Foundation:
-https://github.com/OHF-Voice/piper1-gpl (the old repo is archived and just points here now).
-
-It's installed automatically via `requirements.txt` in step 2 below (`piper-tts` on PyPI),
-so there's no separate binary download. You just need to grab a voice:
-
-```bash
-cd ai-tutor/backend
-python -m piper.download_voices en_US-lessac-medium --data-dir ./voices
-```
-
-Browse other voices (different languages/genders) at:
-https://github.com/OHF-Voice/piper1-gpl/blob/main/docs/VOICES.md
-or listen to samples at https://rhasspy.github.io/piper-samples
-
-Note: Piper is GPL-3.0 licensed as of this repo (the old MIT-licensed version is
-unmaintained) — worth knowing if you plan to redistribute this project commercially.
-
-### c) Python
-Python 3.10 or newer.
+### b) Python
+Install Python 3.10 or newer from https://www.python.org/downloads/windows/.
+Make sure the Python launcher (`py`) or `python` is available from Command Prompt.
 
 ---
 
-## 2. Install Python dependencies
+## 2. Install the application (Windows)
 
-```bash
-cd ai-tutor/backend
-python -m venv venv
-source venv/bin/activate       # on Windows: venv\Scripts\activate
-pip install -r requirements.txt
+From the project folder, double-click `install.bat`. It will:
+
+- Create `backend\venv`
+- Update `pip`
+- Install the dependencies in `backend\requirements.txt`
+- Download the default Piper voice to `backend\voices`
+
+The installer needs an internet connection the first time it runs. `faster-whisper`
+will download the Whisper model (`small` by default, about 500 MB) the first time you
+transcribe audio.
+
+If the installer reports that Python is missing, install Python and run it again. To
+retry the Piper voice download manually:
+
+```bat
+backend\venv\Scripts\python.exe -m piper.download_voices en_US-lessac-medium --data-dir backend\voices
 ```
-
-`faster-whisper` will download the Whisper model (`small` by default, ~500MB) the first
-time you run a transcription — this needs internet once, then works fully offline.
 
 ---
 
@@ -77,11 +66,12 @@ Open `backend/config.py` and check/adjust:
 
 ---
 
-## 4. Run it
+## 4. Run it (Windows)
 
-```bash
-cd ai-tutor/backend
-uvicorn main:app --reload
+Double-click `backend\runserver.bat`, or run this from the project folder:
+
+```bat
+backend\runserver.bat
 ```
 
 Then open your browser to:
